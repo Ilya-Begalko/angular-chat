@@ -1,4 +1,4 @@
-# AngularChat
+# Angular Chat
 
 ## This project was generated with Angular CLI
 ## Using some style from Bootstrap
