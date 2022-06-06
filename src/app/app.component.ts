@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import Pusher from 'pusher-js';
 @Component({
@@ -5,7 +6,15 @@ import Pusher from 'pusher-js';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
+
+  username: string = 'username';
+  message: string = '';
+  messages: any = [];
+
+  constructor(private http: HttpClient) {
+  }
+
   ngOnInit(): void {
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
@@ -22,12 +31,10 @@ export class AppComponent implements OnInit{
     throw new Error('Method not implemented.');
   }
 
-  username: string = 'username';
-  message: string = '';
-  messages: any = [];
-
-
   submit(): void {
-    
+    this.http.post('http://localhost:8000/api/messages', {
+      username: this.username,
+      message: this.message
+    }).subscribe(() => this.message = '')
   }
 }

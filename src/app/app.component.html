@@ -13,6 +13,8 @@
     </div>
   </div>
   <form (submit)="submit()">
-    <input class="form-control" placeholder="Write a message" [(ngModel)] = "message" />
+    <input class="form-control" placeholder="Write a message" [(ngModel)]='message' />
+    <!-- [value] = "message" 
+    (change)="message = $event.target.value" -->
   </form>
 </div>
